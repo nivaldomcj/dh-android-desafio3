@@ -10,4 +10,5 @@
     <string name="login_welcome">Welcome to the Marvel HQ\'s</string>
     <string name="register">Register</string>
     <string name="name">Name</string>
+    <string name="login">Login</string>
 </resources>
