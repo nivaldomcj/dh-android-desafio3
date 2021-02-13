@@ -1,8 +1,12 @@
 ## Sobre
 
-<img src="/img/desafio.gif">
+<p align="center">
+  <img src="/img/desafio.gif">
+</p>
 
-Exercício _Desafio Web Services_ (Desafio 3) desenvolvido no Curso Santander Coders Mobile Android da Digital House.
+<p align="center">
+  Exercício <i>Desafio Web Services</i> (Desafio 3) desenvolvido no Curso Santander Coders Mobile Android da Digital House
+</p>
 
 ## Objetivos
 
