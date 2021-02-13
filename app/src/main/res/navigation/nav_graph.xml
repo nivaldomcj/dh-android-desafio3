@@ -89,6 +89,24 @@
         <argument
             android:name="result"
             app:argType="nivaldo.dh.exercise.webservices.home.model.Result" />
+        <action
+            android:id="@+id/action_comicDetailFragment_to_comicImageFragment"
+            app:destination="@id/comicImageFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/comicImageFragment"
+        android:name="nivaldo.dh.exercise.webservices.home.view.ComicImageFragment"
+        tools:layout="@layout/fragment_comic_image">
+
+        <argument
+            android:name="result"
+            app:argType="nivaldo.dh.exercise.webservices.home.model.Result" />
 
     </fragment>
 

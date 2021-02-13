@@ -144,7 +144,7 @@
         android:layout_height="180dp"
         android:layout_marginStart="12dp"
         android:foreground="?android:attr/selectableItemBackground"
-        android:translationY="-60dp"
+        android:translationY="-55dp"
         app:cardCornerRadius="0dp"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="start|bottom"

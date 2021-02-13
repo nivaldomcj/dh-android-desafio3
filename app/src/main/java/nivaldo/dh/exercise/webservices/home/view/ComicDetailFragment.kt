@@ -11,6 +11,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import jp.wasabeef.glide.transformations.BlurTransformation
 import nivaldo.dh.exercise.webservices.R
 import nivaldo.dh.exercise.webservices.databinding.FragmentComicDetailBinding
 
@@ -20,26 +22,33 @@ class ComicDetailFragment : Fragment() {
     private val args: ComicDetailFragmentArgs by navArgs()
 
     private fun initComponents() {
-        args.result.let {
-            binding.tvComicTitle.text = "${it.title}"
-            binding.tvComicDescription.text = "${it.description}"
-            binding.tvComicPublished.text = "${it.mPublishedDate}"
-            binding.tvComicPages.text = "${it.pageCount}"
-            binding.tvComicPrice.text = "${it.mPrice}"
+        args.result.let { result ->
+            binding.tvComicTitle.text = "${result.title}"
+            binding.tvComicDescription.text = "${result.description}"
+            binding.tvComicPublished.text = "${result.mPublishedDate}"
+            binding.tvComicPages.text = "${result.pageCount}"
+            binding.tvComicPrice.text = "${result.mPrice}"
 
             Glide.with(this)
-                    .load(it.mImagePath)
+                    .load(result.mImagePath)
+                    .apply(RequestOptions.bitmapTransform(BlurTransformation(15, 1)))
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .optionalCenterCrop()
                     .error(R.drawable.layer_ic_broken)
                     .into(binding.ivComicCover)
 
             Glide.with(this)
-                    .load(it.mThumbnailPath)
+                    .load(result.mThumbnailPath)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .centerCrop()
                     .error(R.drawable.layer_ic_broken)
                     .into(binding.ivThumbnail)
+
+            binding.ivThumbnail.setOnClickListener {
+                val action = ComicDetailFragmentDirections
+                        .actionComicDetailFragmentToComicImageFragment(result)
+
+                findNavController().navigate(action)
+            }
         }
     }
 

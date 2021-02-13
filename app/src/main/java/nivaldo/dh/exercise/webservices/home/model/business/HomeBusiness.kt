@@ -14,7 +14,7 @@ class HomeBusiness {
     }
 
     suspend fun getComics(): ApiResponse {
-        return when (val response = repository.getComics(MarvelServiceConstants.SERIES_ID_AMAZING_SPIDER_MAN, true)) {
+        return when (val response = repository.getComics(MarvelServiceConstants.SERIES_ID_AMAZING_SPIDER_MAN, false)) {
             is ApiResponse.Failure -> response
             is ApiResponse.Success -> {
                 val comics = response.data as Comics
