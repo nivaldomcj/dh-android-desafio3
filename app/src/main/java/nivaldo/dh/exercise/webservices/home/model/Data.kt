@@ -1,5 +1,7 @@
 package nivaldo.dh.exercise.webservices.home.model
 
-data class Data(
-        var results: List<Result>?
-)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Data(var results: List<Result>?) : Parcelable

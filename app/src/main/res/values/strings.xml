@@ -12,4 +12,14 @@
     <string name="name">Name</string>
     <string name="login">Login</string>
     <string name="thumbnail">Thumbnail</string>
+    <string name="cover">Cover</string>
+    <string name="comic_detail">Comic Detail</string>
+    <string name="tools_comic_description">The Greatest Super Hero of All Time RETURNS! The world may have changed since Spidey\'s been gone, but so has Peter Parker. This is a man with a second chance at life, and he\'s not wasting a moment of it. Same Parker Luck, new Parker attitude. Putting the \'friendly\' back in the neighborhood, the \'hero\' back into \'super hero,\' and the \'amazing\' back into \'Spider-Man!\' Also returning: The recharged and reenergized ELECTRO!</string>
+    <string name="tools_comic_title">Amazing Spider-Man (2014) #1 (MHAN Variant)</string>
+    <string name="label_published">Published:</string>
+    <string name="tools_comic_published">April 30, 2014</string>
+    <string name="label_price">Price:</string>
+    <string name="tools_comic_price">$ 5.99</string>
+    <string name="label_pages">Pages:</string>
+    <string name="tools_comic_pages">38</string>
 </resources>

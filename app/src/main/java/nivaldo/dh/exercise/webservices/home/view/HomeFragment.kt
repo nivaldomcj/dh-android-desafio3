@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import nivaldo.dh.exercise.webservices.databinding.FragmentHomeBinding
 import nivaldo.dh.exercise.webservices.home.model.Result
@@ -24,7 +25,8 @@ class HomeFragment : Fragment() {
         binding.rvComics.apply {
             layoutManager = GridLayoutManager(context, 3)
             adapter = HomeAdapter(resultList) {
-
+                val action = HomeFragmentDirections.actionHomeFragmentToComicDetailFragment(it)
+                findNavController().navigate(action)
             }
         }
     }
@@ -32,12 +34,12 @@ class HomeFragment : Fragment() {
     private fun initObservables() {
         homeViewModel.getComics()
         homeViewModel.onGetComicsResultSuccess.observe(viewLifecycleOwner, { comics ->
-            comics.data?.results?.let { resultList ->
+            comics?.data?.results?.let { resultList ->
                 setupComicsRecyclerView(resultList)
             }
         })
-        homeViewModel.onGetComicsResultFailure.observe(viewLifecycleOwner, {
-            Toast.makeText(context, "An error occurred: $it", Toast.LENGTH_LONG).show()
+        homeViewModel.onGetComicsResultFailure.observe(viewLifecycleOwner, { error ->
+            Toast.makeText(context, "An error occurred: $error", Toast.LENGTH_LONG).show()
         })
     }
 
@@ -55,7 +57,6 @@ class HomeFragment : Fragment() {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         initObservables()
-
     }
 
 }

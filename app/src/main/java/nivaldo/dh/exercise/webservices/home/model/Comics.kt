@@ -1,5 +1,7 @@
 package nivaldo.dh.exercise.webservices.home.model
 
-data class Comics(
-        val data: Data?
-)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Comics(val data: Data?) : Parcelable

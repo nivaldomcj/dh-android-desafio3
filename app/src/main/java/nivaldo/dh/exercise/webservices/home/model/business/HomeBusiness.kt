@@ -3,7 +3,9 @@ package nivaldo.dh.exercise.webservices.home.model.business
 import nivaldo.dh.exercise.webservices.home.model.Comics
 import nivaldo.dh.exercise.webservices.home.model.repository.HomeRepository
 import nivaldo.dh.exercise.webservices.shared.api.ApiResponse
-import nivaldo.dh.exercise.webservices.shared.constant.MarvelConstants
+import nivaldo.dh.exercise.webservices.shared.constant.MarvelServiceConstants
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomeBusiness {
 
@@ -12,29 +14,37 @@ class HomeBusiness {
     }
 
     suspend fun getComics(): ApiResponse {
-        return when (val response = repository.getComics(MarvelConstants.SERIES_AMAZING_SPIDER_MAN, true)) {
+        return when (val response = repository.getComics(MarvelServiceConstants.SERIES_ID_AMAZING_SPIDER_MAN, true)) {
             is ApiResponse.Failure -> response
             is ApiResponse.Success -> {
                 val comics = response.data as Comics
 
-                comics.data?.results = comics.data?.results?.map {
+                comics.data?.results = comics.data?.results?.map { result ->
                     // format thumbnail path
-                    it.mThumbnailPath = "${it.thumbnail?.path}.${it.thumbnail?.extension}"
+                    result.mThumbnailPath = "${result.thumbnail?.path}.${result.thumbnail?.extension}"
+                    result.mThumbnailPath = result.mThumbnailPath?.replace("http", "https")
 
                     // format image path
-                    it.mImagePath = "${it.images?.first()?.path}.${it.images?.first()?.extension}"
+                    result.mImagePath = "${result.images?.first()?.path}.${result.images?.first()?.extension}"
+                    result.mImagePath = result.mImagePath?.replace("http", "https")
 
                     // format price
-                    it.mPrice = "$ ${it.prices?.first()?.price}"
+                    result.mPrice = "$ ${result.prices?.first()?.price}"
+
+                    // format published date
+                    result.dates?.first()?.date?.let { date ->
+                        val isoDateFormat = SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ssZ", Locale.ENGLISH)
+                        val fullDateFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH)
+
+                        isoDateFormat.parse(date)?.let { parsedDate ->
+                            result.mPublishedDate = fullDateFormat.format(parsedDate)
+                        }
+                    }
 
                     // format thumbnail title
-                    it.mThumbnailTitle = "#${it.issueNumber}"
+                    result.mThumbnailTitle = "#${result.issueNumber}"
 
-                    // fixes url path (avoid insecure internet errors)
-                    it.mThumbnailPath = it.mThumbnailPath?.replace("http", "https")
-                    it.mImagePath = it.mImagePath?.replace("http", "https")
-
-                    it
+                    return@map result
                 }
 
                 return ApiResponse.Success(comics)

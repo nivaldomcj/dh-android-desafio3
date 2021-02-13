@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import nivaldo.dh.exercise.webservices.R
 import nivaldo.dh.exercise.webservices.databinding.ItemResultBinding
 import nivaldo.dh.exercise.webservices.home.model.Result
@@ -37,6 +38,7 @@ class HomeAdapter(
             Glide.with(itemView.context)
                     .load(result.mThumbnailPath)
                     .optionalCenterCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .placeholder(R.drawable.layer_img_loading)
                     .into(ivThumbnail)
 

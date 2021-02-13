@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.view.ComicDetailFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:fitsSystemWindows="true"
+        app:liftOnScroll="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:toolbarId="@+id/toolbar">
+
+            <ImageView
+                android:id="@+id/iv_comic_cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/cover"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingTop="52dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_comic_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tv_comic_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/tools_comic_title" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_comic_description"
+                style="@style/Theme.Marvel.DescriptionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_comic_title"
+                tools:text="@string/tools_comic_description" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_published"
+                style="@style/Theme.Marvel.DescriptionLabel"
+                android:paddingVertical="2dp"
+                android:text="@string/label_published"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_comic_description" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_comic_published"
+                style="@style/Theme.Marvel.DescriptionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="2dp"
+                app:layout_constraintStart_toEndOf="@id/label_published"
+                app:layout_constraintTop_toBottomOf="@id/tv_comic_description"
+                tools:text="@string/tools_comic_published" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_price"
+                style="@style/Theme.Marvel.DescriptionLabel"
+                android:paddingVertical="2dp"
+                android:text="@string/label_price"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_published" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_comic_price"
+                style="@style/Theme.Marvel.DescriptionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="2dp"
+                app:layout_constraintStart_toEndOf="@id/label_price"
+                app:layout_constraintTop_toBottomOf="@id/tv_comic_published"
+                tools:text="@string/tools_comic_price" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_pages"
+                style="@style/Theme.Marvel.DescriptionLabel"
+                android:paddingVertical="2dp"
+                android:text="@string/label_pages"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_price" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_comic_pages"
+                style="@style/Theme.Marvel.DescriptionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="2dp"
+                app:layout_constraintStart_toEndOf="@id/label_pages"
+                app:layout_constraintTop_toBottomOf="@id/tv_comic_price"
+                tools:text="@string/tools_comic_pages" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_container"
+        android:layout_width="120dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="12dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:translationY="-60dp"
+        app:cardCornerRadius="0dp"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="start|bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/thumbnail"
+            android:padding="4dp"
+            android:src="@drawable/layer_img_loading" />
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
