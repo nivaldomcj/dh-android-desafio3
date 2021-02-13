@@ -23,19 +23,15 @@ class SplashFragment : Fragment() {
         })
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View {
         binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?
-    ) {
+    override fun onViewCreated(view: View,
+                               savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         splashViewModel = ViewModelProvider(this).get(SplashViewModel::class.java)
