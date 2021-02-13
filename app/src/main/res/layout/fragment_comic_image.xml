@@ -32,7 +32,6 @@
                 android:background="@color/white"
                 android:contentDescription="@string/comic_detail"
                 android:padding="8dp"
-                android:src="@drawable/layer_img_loading"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
