@@ -16,4 +16,4 @@
 local.properties
 
 # API Private Constants
-app/src/main/java/nivaldo/dh/exercise/webservices/shared/constant/ApiTokenConstants.kt
+/app/src/main/java/nivaldo/dh/exercise/webservices/shared/constant/ApiTokenConstants.kt
