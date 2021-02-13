@@ -19,7 +19,7 @@ class SplashViewModel(application: Application) : AndroidViewModel(application) 
 
     fun getSplashScreen() {
         viewModelScope.launch {
-            delay(2000)
+            delay(1000)
             setSplashResult()
         }
     }
