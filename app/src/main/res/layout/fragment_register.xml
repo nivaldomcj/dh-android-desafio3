@@ -27,7 +27,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_avatar"
             style="@style/Theme.Marvel.RegisterAvatarImageViewStyle"
-            android:src="@drawable/img_avatar_register"
+            android:src="@drawable/img_register"
             app:layout_constraintBottom_toTopOf="@id/welcome_container"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
